@@ -27,6 +27,6 @@
 
 (defroutes app
   (GET "/" [] (find-places DB))
-  (GET "/test" [] (main-template))
+  (GET "/map" [] (main-template))
   (not-found "Page not found"))
 
