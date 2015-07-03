@@ -6,6 +6,7 @@
   :dependencies [[compojure "1.3.4"]
 				 [org.clojure/clojure "1.6.0"]
 				 [org.clojure/data.csv "0.1.2"]
+				 [org.clojure/data.json "0.2.6"]
 				 [mysql/mysql-connector-java "5.1.32"]
 				 [org.clojure/java.jdbc "0.3.6"]
 				 [enlive "1.1.5"]

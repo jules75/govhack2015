@@ -1,5 +1,7 @@
 (ns govhack.core
-  (:require [compojure.core :refer [defroutes routes GET]]
+  (:require [clojure.data.json :as json]
+			[clojure.string :refer [join]]
+			[compojure.core :refer [defroutes routes GET]]
 			[compojure.route :refer [resources not-found]]
 			[yesql.core :refer [defqueries]]
 			[net.cgrand.enlive-html :as html]
@@ -25,8 +27,17 @@
   [:head :title] (html/content "Enlive starter kit"))
 
 
+(html/deftemplate map-template "html/_layout.html"
+  []
+  [:#placeList]
+  (html/content
+   (let [s (->> (find-places DB) (map json/write-str) (join ",") (apply str))]
+	 (str "var places=[" s "]"))
+   ))
+
+
 (defroutes app
-  (GET "/" [] (find-places DB))
-  (GET "/map" [] (main-template))
+  (GET "/" [] (map-template))
+  (GET "/map" [] (map-template))
   (not-found "Page not found"))
 

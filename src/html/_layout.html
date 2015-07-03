@@ -18,7 +18,7 @@
         <nav>
             <ul>
                 <li><a href="map">Map</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="about">About</a></li>
             </ul>
         </nav>
 
@@ -30,19 +30,30 @@
 
         </div>
 
-        <script type="text/javascript"
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOQ-E81Y3xbn8WWj2-jAJzjD7aM88T11s">
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOQ-E81Y3xbn8WWj2-jAJzjD7aM88T11s"></script>
+
+        <script id="placeList">
+            var places = [{"lat": -37.51, "lng": 143.51},
+                          {"lat": -37.52, "lng": 143.52}];
         </script>
+
         <script type="text/javascript">
-            function initialize() {
-                var mapOptions = {
-                    center: { lat: -37.5, lng: 143.5},
-                    zoom: 8
-                };
-                var map = new google.maps.Map(document.getElementById('map'),
-                                              mapOptions);
+
+            var center = { lat: -37.5, lng: 143.5};
+
+            function init() {
+                var opts = { center: center, zoom: 8 };
+                var map = new google.maps.Map(document.getElementById('map'), opts);
+                for (var i=0; i<places.length; i++) {
+                    new google.maps.Marker({
+                        position: new google.maps.LatLng(places[i].lat, places[i].lng),
+                        map: map,
+                        title: places[i].title
+                    });
+                }
             }
-            google.maps.event.addDomListener(window, 'load', initialize);
+
+            google.maps.event.addDomListener(window, 'load', init);
         </script>
 
     </body>
