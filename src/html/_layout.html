@@ -3,24 +3,20 @@
 
     <head>
         <title>This is a title placeholder</title>
-
-        <style type="text/css">
-            div#map {
-                height: 500px;
-                width: 500px;
-            }
-        </style>
-
+        <link rel="stylesheet" href="css/style.css" />
     </head>
 
     <body>
 
-        <nav>
-            <ul>
-                <li><a href="map">Map</a></li>
-                <li><a href="about">About</a></li>
-            </ul>
-        </nav>
+        <header>
+            <h1>Unnamed Project</h1>
+            <nav>
+                <ul>
+                    <li><a href="map">Map</a></li>
+                    <li><a href="about">About</a></li>
+                </ul>
+            </nav>
+        </header>
 
         <div id="content">
 
@@ -33,6 +29,7 @@
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOQ-E81Y3xbn8WWj2-jAJzjD7aM88T11s"></script>
 
         <script id="placeList">
+            // this data is replaced by the server
             var places = [{"lat": -37.51, "lng": 143.51},
                           {"lat": -37.52, "lng": 143.52}];
         </script>

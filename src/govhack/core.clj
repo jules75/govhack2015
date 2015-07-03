@@ -39,5 +39,7 @@
 (defroutes app
   (GET "/" [] (map-template))
   (GET "/map" [] (map-template))
-  (not-found "Page not found"))
+  (resources "/")
+  (not-found "Page not found")
+  )
 
