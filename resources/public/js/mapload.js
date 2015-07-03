@@ -1,5 +1,5 @@
 
-var center = { lat: -37.5, lng: 143.5};
+var center = { lat: -37.56, lng: 143.84};
 
 function createMarker(lat, lng, title, url, map) {
 	var marker = new google.maps.Marker({
@@ -11,7 +11,7 @@ function createMarker(lat, lng, title, url, map) {
 }
 
 function init() {
-	var opts = { center: center, zoom: 8 };
+	var opts = { center: center, zoom: 13 };
 	var map = new google.maps.Map(document.getElementById('map'), opts);
 	for (var i = 0; i < places.length; i++) {
 		var p = places[i];
