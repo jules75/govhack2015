@@ -22,18 +22,16 @@
 		 :password "vmengrtbyj"})
 
 
-(html/deftemplate main-template "html/_layout.html"
+(defn json-places
   []
-  [:head :title] (html/content "Enlive starter kit"))
+  (->> (find-places DB) (map json/write-str) (join ",") (apply str)))
 
 
 (html/deftemplate map-template "html/_layout.html"
   []
   [:#placeList]
   (html/content
-   (let [s (->> (find-places DB) (map json/write-str) (join ",") (apply str))]
-	 (str "var places=[" s "]"))
-   ))
+   (str "var places=[" (json-places) "]")))
 
 
 (defroutes app
