@@ -4,7 +4,7 @@
     <head>
         <title>This is a title placeholder</title>
         <meta name="viewport" content="initial-scale = 1.0, maximum-scale = 1.0" />
-        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="/css/style.css" />
     </head>
 
     <body>
@@ -13,8 +13,8 @@
             <h1>Unnamed Project</h1>
             <nav>
                 <ul>
-                    <li><a href="map">Map</a></li>
-                    <li><a href="about">About</a></li>
+                    <li><a href="/map">Map</a></li>
+                    <li><a href="/about">About</a></li>
                 </ul>
             </nav>
         </header>
@@ -27,7 +27,7 @@
 
         </div>
 
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOQ-E81Y3xbn8WWj2-jAJzjD7aM88T11s"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOQ-E81Y3xbn8WWj2-jAJzjD7aM88T11s"></script>
 
         <script id="placeList">
             // this data is replaced by the server
@@ -35,24 +35,7 @@
                           {"lat": -37.52, "lng": 143.52}];
         </script>
 
-        <script type="text/javascript">
-
-            var center = { lat: -37.5, lng: 143.5};
-
-            function init() {
-                var opts = { center: center, zoom: 8 };
-                var map = new google.maps.Map(document.getElementById('map'), opts);
-                for (var i=0; i<places.length; i++) {
-                    new google.maps.Marker({
-                        position: new google.maps.LatLng(places[i].lat, places[i].lng),
-                        map: map,
-                        title: places[i].title
-                    });
-                }
-            }
-
-            google.maps.event.addDomListener(window, 'load', init);
-        </script>
+        <script src="/js/mapload.js" />
 
     </body>
 

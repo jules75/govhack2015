@@ -34,9 +34,16 @@
    (str "var places=[" (json-places) "]")))
 
 
+(html/deftemplate place-template "html/_layout.html"
+  [id]
+  [:#content]
+  (html/content (find-place-by-id DB id)))
+
+
 (defroutes app
   (GET "/" [] (map-template))
   (GET "/map" [] (map-template))
+  (GET "/place/:id{[0-9]+}" [id] (place-template id))
   (resources "/")
   (not-found "Page not found")
   )
