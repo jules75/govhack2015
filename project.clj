@@ -8,6 +8,7 @@
 				 [org.clojure/data.csv "0.1.2"]
 				 [mysql/mysql-connector-java "5.1.32"]
 				 [org.clojure/java.jdbc "0.3.6"]
+				 [enlive "1.1.5"]
 				 [yesql "0.4.0"]]
   :plugins [[lein-ring "0.9.6"]]
   :ring {:handler govhack.core/app})

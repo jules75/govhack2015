@@ -1,11 +1,8 @@
 (ns govhack.core
-  (:require [clojure.string :refer [split-lines split] :as s]
-			[clojure.data.csv :as csv]
-			[clojure.java.io :as io]
-			[compojure.core :refer [defroutes routes GET]]
+  (:require [compojure.core :refer [defroutes routes GET]]
 			[compojure.route :refer [resources not-found]]
-			;[compojure.handler :refer [site]]
 			[yesql.core :refer [defqueries]]
+			[net.cgrand.enlive-html :as html]
 			))
 
 
@@ -23,7 +20,13 @@
 		 :password "vmengrtbyj"})
 
 
+(html/deftemplate main-template "html/_layout.html"
+  []
+  [:head :title] (html/content "Enlive starter kit"))
+
+
 (defroutes app
   (GET "/" [] (find-places DB))
+  (GET "/test" [] (main-template))
   (not-found "Page not found"))
 
