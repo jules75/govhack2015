@@ -5,6 +5,7 @@
 			[compojure.core :refer [defroutes routes GET]]
 			[compojure.route :refer [resources not-found]]
 			;[compojure.handler :refer [site]]
+			[yesql.core :refer [defqueries]]
 			))
 
 
@@ -13,7 +14,16 @@
 ;    (csv/read-csv in-file))))
 
 
+(defqueries "sql/queries.sql")
+
+
+(def DB {:subprotocol "mysql"
+		 :subname "//localhost:3306/govhack"
+		 :user "root"
+		 :password "vmengrtbyj"})
+
+
 (defroutes app
-  (GET "/" [] "<h1>Hello World</h1>")
-  (not-found "<h1>Page not found</h1>"))
+  (GET "/" [] (find-places DB))
+  (not-found "Page not found"))
 
