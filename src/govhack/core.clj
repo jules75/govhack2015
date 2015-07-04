@@ -73,7 +73,7 @@
   [:#placeList] (html/content (str "var places=[" (jsonify (find-place-by-id DB id)) "]"))
   [:#memories :div :div] (html/content (map memory-snippet (find-memories-by-place-id DB id)))
   [:#artefacts :div :div] (html/content (map photo-snippet (find-photos-by-place-id DB id)))
-  [:#value :div] (html/content (map poll-snippet (find-polls DB)))
+  [:#value :div :div] (html/content (map poll-snippet (find-polls DB)))
   )
 
 
