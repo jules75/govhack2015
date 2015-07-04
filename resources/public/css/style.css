@@ -5,28 +5,37 @@
 
 body {
 	font-family: sans-serif;
+	background-color: #f0f0f0;
 }
 
 header {
-	background-color: black;
+	overflow: auto;
+	border-bottom: 1px solid #999;
+	margin: 10px 20px;
 }
 	header h1 {
 		color: white;
 	}
+	header img {
+		height: 100px;
+		float: right;
+	}
 
 nav li {
-	background-color: #888;
-	color: white;
 	padding: 5px 10px;
 	display: inline-block;
+	margin: 5px 0;
+	border-radius: 3px;
 }
 nav a {
 	text-decoration: none;
-	color: white;
+	color: #333;
 	display: block;
+	font-family: Merriweather, sans-serif;
+	font-weight: bold;
 }
 nav li:hover a {
-	color: yellow;
+	color: #666;
 }
 
 
@@ -52,19 +61,32 @@ div#map {
 
 /* place
 */
-
+#place h2 {
+	font-family: Merriweather, sans-serif;
+	text-align: center;
+	margin: 1em;
+}
 div.section {
 	float: left;
 	padding: 10px;
-	margin-right: 10px;
-	background-color: #eee;
-	min-height: 200px;
-	width: 30%;
+	margin: 10px;
+	width: 400px;
 }
+	div.section h3 {
+		text-align: center;
+		font-weight: normal;
+		font-family: 'Open Sans', sans-serif;
+	}
 	div.section h3 em {
 		font-weight: normal;
 		font-style: normal;
 		padding-left: 1em;
 		color: #555;
+	}
+	div.section div {
+		border: 1px solid #999;
+  		border-radius: 15px;
+		padding: 10px;
+		min-height: 200px;
 	}
 

@@ -1,7 +1,7 @@
 (ns govhack.core
   (:require [clojure.data.json :as json]
 			[clojure.string :refer [join]]
-			[compojure.core :refer [defroutes routes GET]]
+			[compojure.core :refer [defroutes routes GET POST]]
 			[compojure.route :refer [resources not-found]]
 			[yesql.core :refer [defqueries]]
 			[net.cgrand.enlive-html :as html]
@@ -51,6 +51,7 @@
   (GET "/" [] (map-template))
   (GET "/map" [] (map-template))
   (GET "/place/:id{[0-9]+}" [id] (place-template id))
+  ;(POST "/add/memory"
   (resources "/")
   (not-found "Page not found")
   )
