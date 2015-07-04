@@ -7,11 +7,18 @@ body {
 	font-family: sans-serif;
 }
 
+header {
+	background-color: black;
+}
+	header h1 {
+		color: white;
+	}
+
 nav li {
 	background-color: #888;
 	color: white;
-	border-top: 1px solid white;
-	padding: 5px;
+	padding: 5px 10px;
+	display: inline-block;
 }
 nav a {
 	text-decoration: none;
@@ -27,3 +34,18 @@ div#map {
 	height: 500px;
 	width: 100%;
 }
+
+
+
+/* place
+*/
+
+div.section {
+	float: left;
+	padding: 10px;
+	margin-right: 10px;
+	background-color: #eee;
+	min-height: 200px;
+	width: 30%;
+}
+

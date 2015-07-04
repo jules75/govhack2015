@@ -8,11 +8,6 @@
 			))
 
 
-;(def data (with-open [in-file (io/reader "ballaratgraffitidefects.csv")]
-;  (doall
-;    (csv/read-csv in-file))))
-
-
 (defqueries "sql/queries.sql")
 
 
@@ -34,10 +29,22 @@
    (str "var places=[" (json-places) "]")))
 
 
+(html/defsnippet
+  place-snippet
+  "html/place.html"
+  [:#place]
+  [place]
+  [:h2] (html/content (:title place))
+  ;[:span.author] (html/content (:author place))
+  ;[:div.post-body] (html/content (:body place))
+  )
+
+
 (html/deftemplate place-template "html/_layout.html"
   [id]
   [:#content]
-  (html/content (find-place-by-id DB id)))
+  (html/content (place-snippet (first (find-place-by-id DB id))))
+  )
 
 
 (defroutes app
