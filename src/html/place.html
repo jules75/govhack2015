@@ -9,7 +9,13 @@
         <p class="imgwrap"><img src="/img/artefact.svg" alt="" /></p>
         <h3>Photos &amp; artefacts</h3>
         <div>
-            <p><a href="#">Add artefact</a></p>
+            <form method="post" action="/photo/add">
+                <input id="place-id" name="place-id" type="hidden" />
+                <input id="photo-url" name="photo-url" required="required" placeholder="Enter your photo URL here."></input>
+                <input type="submit" value="Add online photo" />
+            </form>
+
+        <div>PHOTOS GO HERE</div>
         </div>
     </div>
 

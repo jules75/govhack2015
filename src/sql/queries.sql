@@ -22,3 +22,15 @@ FROM memories
 WHERE place_id = ?
 ORDER BY created DESC
 
+
+-- name: insert-photo!
+INSERT INTO photos (place_id, url)
+VALUES (:place-id, :url)
+
+
+-- name: find-photos-by-place-id
+SELECT id, place_id, url, created
+FROM photos
+WHERE place_id = ?
+ORDER BY created DESC
+

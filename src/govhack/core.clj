@@ -49,11 +49,22 @@
   [:.timestamp] (html/content (str (:created memory))))
 
 
+(html/defsnippet
+  photo-snippet
+  "html/photo.html"
+  [:.photo]
+  [photo]
+  [:img] (html/set-attr :src (:url photo))
+  [:.timestamp] (html/content (str (:created photo))))
+
+
 (html/deftemplate place-template "html/_layout.html"
   [id]
   [:#content] (html/content (place-snippet (first (find-place-by-id DB id))))
   [:#placeList] (html/content (str "var places=[" (jsonify (find-place-by-id DB id)) "]"))
-  [:#memories :div :div] (html/content (map memory-snippet (find-memories-by-place-id DB id))))
+  [:#memories :div :div] (html/content (map memory-snippet (find-memories-by-place-id DB id)))
+  [:#artefacts :div :div] (html/content (map photo-snippet (find-photos-by-place-id DB id)))
+  )
 
 
 (defroutes routes
@@ -64,6 +75,12 @@
 		[memory-text place-id]
 		(do
 		  (insert-memory! DB place-id memory-text)
+		  (redirect (str "/place/" place-id))
+		  ))
+  (POST "/photo/add"
+		[photo-url place-id]
+		(do
+		  (insert-photo! DB place-id photo-url)
 		  (redirect (str "/place/" place-id))
 		  ))
   (resources "/")
