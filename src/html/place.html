@@ -3,12 +3,18 @@
 
     <h2>Place title</h2>
 
-    <div class="section" id="artifacts">
-        <h3>Artifacts</h3>
+    <div class="section" id="artefacts">
+        <h3>Artefacts</h3>
+        <p><a href="#">Add artefact</a></p>
     </div>
 
     <div class="section" id="memories">
         <h3>Memories</h3>
+
+        <form method="post" action="/add-memory">
+            <textarea id="memory-text" name="memory-text" placeholder="What are your memories of this place? Share them here."></textarea>
+            <input type="submit" />
+        </form>
     </div>
 
     <div class="section" id="value">
