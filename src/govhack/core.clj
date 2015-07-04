@@ -64,7 +64,10 @@
   "html/poll.html"
   [:.poll]
   [poll]
-  [:.title] (html/content (:title poll)))
+  [:.title] (html/content (:title poll))
+  [(html/attr= :type "range")] (html/set-attr :name (str "poll-response-" (:id poll)))
+  [(html/attr= :type "checkbox")] (html/set-attr :name (str "poll-enabled-" (:id poll)))
+  )
 
 
 (html/deftemplate place-template "html/_layout.html"
