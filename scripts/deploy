@@ -1,0 +1,17 @@
+#!/usr/bin/bash
+
+read -p "Make sure all JAVA processes are killed before continuing. Press any key"
+
+echo "### Removing old JAR files"
+lein clean
+
+echo "### Building JAR file"
+lein ring uberjar
+
+echo "### Uploading JAR file"
+scp target/govhack*standalone.jar root@50.116.14.16:/srv/govhack2015
+
+echo "### Starting server remotely"
+ssh root@50.116.14.16 /srv/startservers
+
+echo "### Done"
