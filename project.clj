@@ -9,6 +9,7 @@
 				 [org.clojure/data.json "0.2.6"]
 				 [mysql/mysql-connector-java "5.1.32"]
 				 [org.clojure/java.jdbc "0.3.6"]
+				 [ring "1.4.0-RC2"]
 				 [enlive "1.1.5"]
 				 [yesql "0.4.0"]]
   :plugins [[lein-ring "0.9.6"]]

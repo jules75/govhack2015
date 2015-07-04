@@ -4,6 +4,7 @@
 			[compojure.core :refer [defroutes GET POST]]
 			[compojure.route :refer [resources not-found]]
 			[compojure.handler :refer [site]]
+			[ring.util.response :refer [redirect]]
 			[yesql.core :refer [defqueries]]
 			[net.cgrand.enlive-html :as html]
 			))
@@ -59,7 +60,12 @@
   (GET "/" [] (map-template))
   (GET "/map" [] (map-template))
   (GET "/place/:id{[0-9]+}" [id] (place-template id))
-  (POST "/memory/add" [memory-text place-id] (do (insert-memory! DB place-id memory-text) "DONE"))
+  (POST "/memory/add"
+		[memory-text place-id]
+		(do
+		  (insert-memory! DB place-id memory-text)
+		  (redirect (str "/place/" place-id))
+		  ))
   (resources "/")
   (not-found "Page not found"))
 
