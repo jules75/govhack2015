@@ -85,7 +85,7 @@ div.section {
 		padding-left: 1em;
 		color: #555;
 	}
-	div.section div {
+	div.section > div {
 		border: 1px solid #999;
   		border-radius: 15px;
 		padding: 10px;

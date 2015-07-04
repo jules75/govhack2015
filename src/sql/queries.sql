@@ -15,3 +15,9 @@ WHERE id = :id
 INSERT INTO memories (place_id, details)
 VALUES (:place-id, :details)
 
+
+-- name: find-memories-by-place-id
+SELECT id, place_id, details, created
+FROM memories
+WHERE place_id = ?
+

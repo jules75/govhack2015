@@ -36,7 +36,16 @@
   [:#place]
   [place]
   [:h2] (html/content (:title place))
-  [:#place-id] (html/set-attr :value (:id place))
+  [:#place-id] (html/set-attr :value (:id place)))
+
+
+(html/defsnippet
+  memory-snippet
+  "html/memory.html"
+  [:.memory]
+  [memory]
+  [:.details] (html/content (:details memory))
+  [:.created] (html/content (str "Created: " (:created memory)))
   )
 
 
@@ -44,6 +53,7 @@
   [id]
   [:#content] (html/content (place-snippet (first (find-place-by-id DB id))))
   [:#placeList] (html/content (str "var places=[" (jsonify (find-place-by-id DB id)) "]"))
+  [:#memories :div :div] (html/content (memory-snippet (first (find-memories-by-place-id DB id))))
   )
 
 
