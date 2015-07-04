@@ -45,16 +45,14 @@
   [:.memory]
   [memory]
   [:.details] (html/content (:details memory))
-  [:.created] (html/content (str "Created: " (:created memory)))
-  )
+  [:.timestamp] (html/content (str (:created memory))))
 
 
 (html/deftemplate place-template "html/_layout.html"
   [id]
   [:#content] (html/content (place-snippet (first (find-place-by-id DB id))))
   [:#placeList] (html/content (str "var places=[" (jsonify (find-place-by-id DB id)) "]"))
-  [:#memories :div :div] (html/content (memory-snippet (first (find-memories-by-place-id DB id))))
-  )
+  [:#memories :div :div] (html/content (map memory-snippet (find-memories-by-place-id DB id))))
 
 
 (defroutes routes

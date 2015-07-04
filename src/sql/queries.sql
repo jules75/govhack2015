@@ -20,4 +20,5 @@ VALUES (:place-id, :details)
 SELECT id, place_id, details, created
 FROM memories
 WHERE place_id = ?
+ORDER BY created DESC
 
