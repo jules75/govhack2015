@@ -17,21 +17,16 @@
 		 :password "vmengrtbyj"})
 
 
-(defn json-places
-  []
-  (->> (find-places DB) (map json/write-str) (join ",") (apply str)))
-
-
-(defn json-place
-  [id]
-  (->> (find-place-by-id DB id) (map json/write-str) (join ",") (apply str)))
+(defn jsonify
+  [coll]
+  (->> coll (map json/write-str) (join ",") (apply str)))
 
 
 (html/deftemplate map-template "html/_layout.html"
   []
   [:#placeList]
   (html/content
-   (str "var places=[" (json-places) "]")))
+   (str "var places=[" (jsonify (find-places DB)) "]")))
 
 
 (html/defsnippet
@@ -46,7 +41,7 @@
 (html/deftemplate place-template "html/_layout.html"
   [id]
   [:#content] (html/content (place-snippet (first (find-place-by-id DB id))))
-  [:#placeList] (html/content (str "var places=[" (json-place id) "]"))
+  [:#placeList] (html/content (str "var places=[" (jsonify (find-place-by-id DB id)) "]"))
   )
 
 
