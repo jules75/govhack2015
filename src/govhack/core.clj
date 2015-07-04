@@ -59,12 +59,21 @@
   [:.timestamp] (html/content (str (:created photo))))
 
 
+(html/defsnippet
+  poll-snippet
+  "html/poll.html"
+  [:.poll]
+  [poll]
+  [:.title] (html/content (:title poll)))
+
+
 (html/deftemplate place-template "html/_layout.html"
   [id]
   [:#content] (html/content (place-snippet (first (find-place-by-id DB id))))
   [:#placeList] (html/content (str "var places=[" (jsonify (find-place-by-id DB id)) "]"))
   [:#memories :div :div] (html/content (map memory-snippet (find-memories-by-place-id DB id)))
   [:#artefacts :div :div] (html/content (map photo-snippet (find-photos-by-place-id DB id)))
+  [:#value :div] (html/content (map poll-snippet (find-polls DB)))
   )
 
 

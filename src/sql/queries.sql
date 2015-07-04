@@ -34,3 +34,8 @@ FROM photos
 WHERE place_id = ?
 ORDER BY created DESC
 
+
+-- name: find-polls
+SELECT id, title
+FROM polls
+

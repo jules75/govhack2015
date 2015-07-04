@@ -9,7 +9,6 @@ var styles = [
 		 { "color": "#ffffff" }]}];
 
 function createMarker(lat, lng, title, category, url, map) {
-	console.log(category);
 	var marker = new google.maps.Marker({
 		position: new google.maps.LatLng(lat, lng),
 		icon: '/img/markers/' + category + '.svg',

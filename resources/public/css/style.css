@@ -120,4 +120,16 @@ div.section {
 }
 
 
+/* polls
+*/
+div.poll {
+	margin-bottom: 2em;
+}
+	div.poll .title {
+		font-weight: bold;
+	}
+	div.poll input[disabled="disabled"] {
+		visibility: hidden;
+	}
+
 
