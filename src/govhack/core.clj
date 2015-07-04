@@ -22,6 +22,11 @@
   (->> (find-places DB) (map json/write-str) (join ",") (apply str)))
 
 
+(defn json-place
+  [id]
+  (->> (find-place-by-id DB id) (map json/write-str) (join ",") (apply str)))
+
+
 (html/deftemplate map-template "html/_layout.html"
   []
   [:#placeList]
@@ -35,15 +40,13 @@
   [:#place]
   [place]
   [:h2] (html/content (:title place))
-  ;[:span.author] (html/content (:author place))
-  ;[:div.post-body] (html/content (:body place))
   )
 
 
 (html/deftemplate place-template "html/_layout.html"
   [id]
-  [:#content]
-  (html/content (place-snippet (first (find-place-by-id DB id))))
+  [:#content] (html/content (place-snippet (first (find-place-by-id DB id))))
+  [:#placeList] (html/content (str "var places=[" (json-place id) "]"))
   )
 
 

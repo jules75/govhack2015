@@ -56,7 +56,9 @@ div#map {
 	height: 500px;
 	width: 100%;
 }
-
+	#place div#map {
+		height: 200px;
+	}
 
 
 /* place
