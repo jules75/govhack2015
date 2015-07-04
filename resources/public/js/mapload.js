@@ -1,9 +1,10 @@
 
-var center = { lat: -37.56, lng: 143.84};
+var center = { lat: places[0].lat, lng: places[0].lng };
 
 function createMarker(lat, lng, title, url, map) {
 	var marker = new google.maps.Marker({
 		position: new google.maps.LatLng(lat, lng),
+		icon: '/img/marker.svg',
 		map: map,
 		title: title});
 	google.maps.event.addListener(marker, "click", function() {
