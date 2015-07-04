@@ -6,6 +6,8 @@
 body {
 	font-family: sans-serif;
 	background-color: #f6f6f6;
+	max-width: 1000px;
+	margin: auto;
 }
 
 header {
@@ -39,9 +41,15 @@ nav li:hover a {
 }
 
 
+h2 {
+	font-family: Merriweather, sans-serif;
+	text-align: center;
+	margin: 1em;
+}
+
+
 form {
-	background-color: #ddd;
-	padding: 10px;
+	margin-top: 10px;
 }
 	form textarea {
 		width: 100%;
@@ -55,6 +63,7 @@ form {
 div#map {
 	height: 500px;
 	width: 100%;
+	box-shadow: 0px 0px 30px #888;
 }
 	#place div#map {
 		height: 200px;
@@ -63,21 +72,23 @@ div#map {
 
 /* place
 */
-#place h2 {
-	font-family: Merriweather, sans-serif;
-	text-align: center;
-	margin: 1em;
-}
 div.section {
 	float: left;
-	padding: 10px;
-	margin: 10px;
-	width: 400px;
+	margin: 1.5%;
+	width: 30%;
 }
+	div.section p.imgwrap {
+		text-align: center;
+		margin-top: 20px;
+	}
+	div.section p.imgwrap img {
+		height: 50px;
+	}
 	div.section h3 {
 		text-align: center;
 		font-weight: normal;
 		font-family: 'Open Sans', sans-serif;
+		margin-bottom: 10px;
 	}
 	div.section h3 em {
 		font-weight: normal;
@@ -86,11 +97,12 @@ div.section {
 		color: #555;
 	}
 	div.section > div {
-		border: 1px solid #999;
+		border: 1px solid #ccc;
   		border-radius: 15px;
 		padding: 10px;
 		min-height: 200px;
 	}
+
 #place .memory {
 	margin: 20px 0;
 	padding: 5px;
