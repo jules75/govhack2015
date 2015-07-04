@@ -55,6 +55,7 @@
   [:.photo]
   [photo]
   [:img] (html/set-attr :src (:url photo))
+  [:a] (html/set-attr :href (:url photo))
   [:.timestamp] (html/content (str (:created photo))))
 
 
