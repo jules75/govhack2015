@@ -1,12 +1,12 @@
 
 -- name: find-places
 -- Returns all places
-SELECT id, lat, lng, title
+SELECT id, lat, lng, title, category
 FROM places
 
 
 -- name: find-place-by-id
-SELECT id, lat, lng, title
+SELECT id, lat, lng, title, category
 FROM places
 WHERE id = :id
 
