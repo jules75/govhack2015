@@ -16,7 +16,8 @@
         <h3>Memories</h3>
 
         <div>
-        <form method="post" action="/add-memory">
+            <form method="post" action="/memory/add">
+            <input id="place-id" name="place-id" type="hidden" />
             <textarea id="memory-text" name="memory-text" placeholder="What are your memories of this place? Share them here."></textarea>
             <input type="submit" />
         </form>

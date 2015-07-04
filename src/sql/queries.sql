@@ -9,3 +9,9 @@ FROM places
 SELECT id, lat, lng, title
 FROM places
 WHERE id = :id
+
+
+-- name: insert-memory!
+INSERT INTO memories (place_id, details)
+VALUES (:place-id, :details)
+
