@@ -128,8 +128,11 @@ div.poll {
 	div.poll .title {
 		font-weight: bold;
 	}
-	div.poll input[disabled="disabled"] {
+	div.poll input[disabled="disabled"], div.poll p.label {
 		visibility: hidden;
+	}
+	div.poll p.label {
+		text-align: right;
 	}
 
 
