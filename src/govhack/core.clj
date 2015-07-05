@@ -61,6 +61,17 @@
 
 
 (html/defsnippet
+  response-snippet
+  "html/response.html"
+  [:.response]
+  [response]
+  [:td.title] (html/content (:title response))
+  [:td.value] (html/content (str (:value response)))
+  [:td.count] (html/content (str (:response_count response)))
+  )
+
+
+(html/defsnippet
   photo-snippet
   "html/photo.html"
   [:.photo]
@@ -76,8 +87,7 @@
   [:.poll]
   [poll]
   [:.title] (html/content (:title poll))
-  [(html/attr= :type "range")] (html/set-attr :name (str "poll-response-" (:id poll)))
-  )
+  [(html/attr= :type "range")] (html/set-attr :name (str "poll-response-" (:id poll))))
 
 
 (html/deftemplate place-template "html/_layout.html"
@@ -87,6 +97,7 @@
   [:#memories :div :div] (html/content (map memory-snippet (find-memories-by-place-id DB id)))
   [:#artefacts :div :div] (html/content (map photo-snippet (find-photos-by-place-id DB id)))
   [:#value :div :div] (html/content (map poll-snippet (find-polls DB)))
+  [:#responses] (html/content (map response-snippet (find-aggregated-responses-by-place-id DB id)))
   [(html/attr= :type "hidden")] (html/set-attr :value id)
   )
 

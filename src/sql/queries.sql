@@ -44,3 +44,12 @@ FROM polls
 INSERT INTO responses (poll_id, value, place_id)
 VALUES (:poll-id, :value, :place-id)
 
+
+-- name: find-aggregated-responses-by-place-id
+SELECT title, value, count(*) as response_count
+FROM `responses`
+	INNER JOIN polls
+    ON polls.id=responses.poll_id
+WHERE place_id = ?
+GROUP BY poll_id, value
+

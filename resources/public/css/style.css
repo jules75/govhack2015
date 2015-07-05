@@ -63,6 +63,16 @@ form {
 	}
 
 
+table {
+	border-collapse: collapse;
+	font-size: 0.8em;
+}
+	table td {
+		border: 1px solid #999;
+		padding: 2px;
+	}
+
+
 div#map {
 	height: 500px;
 	width: 100%;
