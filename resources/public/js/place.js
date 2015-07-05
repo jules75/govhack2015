@@ -67,3 +67,9 @@ if(fetchPollIds().indexOf(placeId) > -1) {
 	$('div#value form').hide();
 }
 
+
+// change numbers to strings in response table
+jQuery.each($('.response .value'), function(i, val) {
+	$(this).text(responseLabels[parseInt(val.textContent)]);
+});
+
