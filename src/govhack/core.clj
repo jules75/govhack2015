@@ -90,6 +90,12 @@
   [(html/attr= :type "range")] (html/set-attr :name (str "poll-response-" (:id poll))))
 
 
+
+(html/deftemplate about-template "html/_layout.html"
+  []
+  [:#content] (html/content (html/html-resource "html/about.html")))
+
+
 (html/deftemplate place-template "html/_layout.html"
   [id]
   [:#content] (html/content (place-snippet (first (find-place-by-id DB id))))
@@ -98,8 +104,7 @@
   [:#artefacts :div :div] (html/content (map photo-snippet (find-photos-by-place-id DB id)))
   [:#value :div :div] (html/content (map poll-snippet (find-polls DB)))
   [:#responses] (html/content (map response-snippet (find-aggregated-responses-by-place-id DB id)))
-  [(html/attr= :type "hidden")] (html/set-attr :value id)
-  )
+  [(html/attr= :type "hidden")] (html/set-attr :value id))
 
 
 (defn poll-response-handler
@@ -117,6 +122,7 @@
 (defroutes routes
   (GET "/" [] (map-template))
   (GET "/map" [] (map-template))
+  (GET "/about" [] (about-template))
   (GET "/place/:id{[0-9]+}" [id] (place-template id))
   (POST "/memory/add"
 		[memory-text place-id]

@@ -1,4 +1,4 @@
-(defproject govhack "0.4"
+(defproject govhack "0.5"
   :description "FIXME: write description"
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
