@@ -24,6 +24,17 @@
   (->> coll (map json/write-str) (join ",") (apply str)))
 
 
+(defn to-vals
+  "Return map with f applied to values"
+  [f coll]
+  (zipmap (keys coll) (map f (vals coll))))
+
+(defn to-keys
+  "Return map with f applied to keys"
+  [f coll]
+  (zipmap (map f (keys coll)) (vals coll)))
+
+
 (html/deftemplate map-template "html/_layout.html"
   []
   [:#placeList]
@@ -66,7 +77,6 @@
   [poll]
   [:.title] (html/content (:title poll))
   [(html/attr= :type "range")] (html/set-attr :name (str "poll-response-" (:id poll)))
-  [(html/attr= :type "checkbox")] (html/set-attr :name (str "poll-enabled-" (:id poll)))
   )
 
 
@@ -77,7 +87,20 @@
   [:#memories :div :div] (html/content (map memory-snippet (find-memories-by-place-id DB id)))
   [:#artefacts :div :div] (html/content (map photo-snippet (find-photos-by-place-id DB id)))
   [:#value :div :div] (html/content (map poll-snippet (find-polls DB)))
+  [(html/attr= :type "hidden")] (html/set-attr :value id)
   )
+
+
+(defn poll-response-handler
+  [params]
+  (let [params2 (to-vals #(Integer/parseInt %) (into {} params))
+		place-id (:place-id params2)
+		extract-poll-id #(Integer/parseInt (last (re-find #"poll-response-(\d+)" (name %))))
+		responses (to-keys extract-poll-id (dissoc params2 :place-id))]
+	(doseq [[poll-id value] responses]
+	  (insert-response! DB poll-id value place-id))
+	"SAVED"
+	))
 
 
 (defroutes routes
@@ -96,6 +119,7 @@
 		  (insert-photo! DB place-id photo-url)
 		  (redirect (str "/place/" place-id))
 		  ))
+  (POST "/response/add" [& params] (poll-response-handler params))
   (resources "/")
   (not-found "Page not found"))
 

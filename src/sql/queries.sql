@@ -39,3 +39,7 @@ ORDER BY created DESC
 SELECT id, title
 FROM polls
 
+
+-- name: insert-response!
+INSERT INTO responses (poll_id, value, place_id)
+VALUES (:poll-id, :value, :place-id)
