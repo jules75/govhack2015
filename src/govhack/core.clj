@@ -99,7 +99,7 @@
 		responses (to-keys extract-poll-id (dissoc params2 :place-id))]
 	(doseq [[poll-id value] responses]
 	  (insert-response! DB poll-id value place-id))
-	"SAVED"
+	(redirect (str "/place/" place-id))
 	))
 
 

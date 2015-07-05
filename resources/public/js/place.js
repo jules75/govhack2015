@@ -9,7 +9,7 @@ var responseLabels = [
 
 /*
 	TODO
-	Code below relies on elements being next to each other.
+	Some functions below rely on elements being next to each other.
 	Needs less brittle solution.
 */
 
@@ -36,4 +36,15 @@ $('input[type="range"]').on("input change", function(e) {
 	$(this).next().text(responseLabels[e.target.value]);
 });
 
+
+// remember user has submitted poll response
+$('div#value form').submit(function(e) {
+	localStorage["pollSubmitted"] = Date.now();
+});
+
+
+// hide form if poll already submitted
+if (localStorage["pollSubmitted"]) {
+	$('div#value form').hide();
+}
 
