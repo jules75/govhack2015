@@ -131,7 +131,7 @@ div.poll {
 	div.poll .title {
 		font-weight: bold;
 	}
-	div.poll input[disabled="disabled"], div.poll p.label {
+	div.poll input[disabled="disabled"] {
 		visibility: hidden;
 	}
 	div.poll p.label {
