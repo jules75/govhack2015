@@ -9,7 +9,7 @@ var responseLabels = [
 
 /*
 	TODO
-	Some functions below rely on elements being next to each other.
+	Some code below relies on elements being next to each other.
 	Needs less brittle solution.
 */
 
@@ -37,14 +37,33 @@ $('input[type="range"]').on("input change", function(e) {
 });
 
 
-// remember user has submitted poll response
-$('div#value form').submit(function(e) {
-	localStorage["pollSubmitted"] = Date.now();
+// return array of poll ids already submitted
+function fetchPollIds() {
+	var s = localStorage["pollsSubmitted"];
+	return s ? JSON.parse(s) : [];
+}
+
+// save poll id to array of submitted ids
+function savePollId(id) {
+	var ids = fetchPollIds();
+	ids.push(id);
+	localStorage["pollsSubmitted"] = JSON.stringify(ids);
+}
+
+// retrieve place id from URL - TODO: ugly as hell, fix
+var placeId = parseInt(window.location.pathname.match(/\/place\/(\d+)/)[1]);
+
+
+// remember user has submitted response to this poll
+$('div#value form').submit(function() {
+	//var placeId = parseInt($(this).serializeArray().filter(function(e) { return (e.name=="place-id"); })[0].value);
+	ids = fetchPollIds();
+	savePollId(placeId);
 });
 
 
 // hide form if poll already submitted
-if (localStorage["pollSubmitted"]) {
+if(fetchPollIds().indexOf(placeId) > -1) {
 	$('div#value form').hide();
 }
 
