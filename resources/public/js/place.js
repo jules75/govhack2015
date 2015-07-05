@@ -62,9 +62,11 @@ $('div#value form').submit(function() {
 });
 
 
-// hide form if poll already submitted
+// hide form/response depending on whether poll already submitted
 if(fetchPollIds().indexOf(placeId) > -1) {
 	$('div#value form').hide();
+} else {
+	$('div#value table').hide();
 }
 
 

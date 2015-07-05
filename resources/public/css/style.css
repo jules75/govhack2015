@@ -67,9 +67,17 @@ table {
 	border-collapse: collapse;
 	font-size: 0.8em;
 }
+	table thead td {
+		background-color: #888;
+		color: #ddd;
+	}
 	table td {
 		border: 1px solid #999;
-		padding: 2px;
+		padding: 5px;
+		background-color: white;
+	}
+	table tr:hover td {
+		background-color: yellow;
 	}
 
 
