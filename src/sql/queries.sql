@@ -1,8 +1,12 @@
 
 -- name: find-places
--- Returns all places
-SELECT id, lat, lng, title, category
+-- Returns all places + number of memories, photos & responses for each
+SELECT places.id, lat, lng, title, category, count(photos.id) AS photo_count, count(memories.id) AS memory_count, count(responses.id) AS response_count
 FROM places
+	LEFT JOIN photos ON places.id = photos.place_id
+    LEFT JOIN memories ON places.id = memories.place_id
+    LEFT JOIN responses ON places.id = responses.place_id
+GROUP BY places.id
 
 
 -- name: find-place-by-id

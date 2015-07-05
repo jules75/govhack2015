@@ -24,7 +24,8 @@ function init() {
 	map.setOptions({styles: styles});
 	for (var i = 0; i < places.length; i++) {
 		var p = places[i];
-		createMarker(p.lat, p.lng, p.title, p.category, "/place/"+p.id, map);
+		var category = (p.response_count + p.memory_count + p.photo_count)>0 ? 'populated' : 'empty';
+		createMarker(p.lat, p.lng, p.title, category, "/place/"+p.id, map);
 	}
 }
 
