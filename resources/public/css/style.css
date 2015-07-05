@@ -134,6 +134,10 @@ div.section {
 	padding: 5px;
 }
 
+.memory .details {
+	overflow: hidden; 	// handle long URLs
+}
+
 
 #place .photo img {
 	width: 100%;
